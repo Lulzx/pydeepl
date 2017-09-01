@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
   name='pydeepl',
   packages=['pydeepl'],
-  version='0.2',
+  version='0.3',
   description='An API wrapper for deepl.com translating service.',
   author='Emilio Carrión Peñalba',
   author_email='emiliok1997@gmail.com',

@@ -51,8 +51,8 @@ Pydeepl supports these languages:
 
 DeepL is a product from DeepL GmbH. More info: [deepl.com/publisher.html](https://www.deepl.com/publisher.html)
 
-This package has been heavily inspired by [node-deepls](https://github.com/chriskonnertz/DeepLy) and [node-deepls](https://github.com/pbrln/node-deepl).
+This package has been heavily inspired by [node-deepls](https://github.com/pbrln/node-deepl) and [DeepLy](https://github.com/chriskonnertz/DeepLy).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

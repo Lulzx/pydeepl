@@ -4,6 +4,7 @@ import json
 BASE_URL = 'https://www.deepl.com/jsonrpc'
 
 LANGUAGES = {
+    'auto': 'Auto',
     'DE': 'German',
     'EN': 'English',
     'FR': 'French',
@@ -20,7 +21,7 @@ class TranslationError(Exception):
         self.errors = errors
 
 
-def translate(text, from_lang, to_lang):
+def translate(text, to_lang, from_lang='auto'):
     if text is None:
         raise TranslationError('Text can\'t be None.', {})
     if to_lang not in LANGUAGES.keys():

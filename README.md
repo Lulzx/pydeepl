@@ -1,5 +1,5 @@
 # pydeepl
-An API wrapper for deepl.com translating service.
+A python API wrapper for deepl.com translating service.
 
 ## Installation
 
@@ -13,7 +13,7 @@ pip install pydeepl
 
 Pydeepl was written for both python 2 and python 3.
 
-### Add Pydeepl to your application
+### Add pydeepl to your application
 
 ```python
 import pydeepl

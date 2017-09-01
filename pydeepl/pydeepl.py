@@ -51,7 +51,7 @@ def translate(text, from_lang, to_lang):
     }
 
     response = json.loads(requests.post(BASE_URL, json=parameters).text)
-    
+
     translations = response['result']['translations']
 
     if len(translations) == 0 or translations[0]['beams'] is None or translations[0]['beams'][0]['postprocessed_sentence'] is None:

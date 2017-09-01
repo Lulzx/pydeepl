@@ -8,7 +8,7 @@ setup(
   author='Emilio Carrión Peñalba',
   author_email='emiliok1997@gmail.com',
   url='https://github.com/EmilioK97/pydeepl',
-  download_url='https://github.com/emiliok97/pydeepl/archive/0.1.tar.gz',
+  download_url='https://github.com/emiliok97/pydeepl/archive/0.3.tar.gz',
   keywords=['translate', 'translation', 'example'],
   classifiers=[],
   install_requires=[

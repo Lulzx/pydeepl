@@ -14,24 +14,26 @@ LANGUAGES = {
     'PL': 'Polish'
 }
 
+JSONRPC_VERSION = '2.0'
+DEEPL_METHOD = 'LMT_handle_jobs'
+
 
 class TranslationError(Exception):
-    def __init__(self, message, errors):
+    def __init__(self, message):
         super(TranslationError, self).__init__(message)
-        self.errors = errors
 
 
 def translate(text, to_lang, from_lang='auto'):
     if text is None:
-        raise TranslationError('Text can\'t be None.', {})
+        raise TranslationError('Text can\'t be None.')
     if to_lang not in LANGUAGES.keys():
-        raise TranslationError('Language {} not available.'.format(to_lang), {})
+        raise TranslationError('Language {} not available.'.format(to_lang))
     if from_lang is not None and from_lang not in LANGUAGES.keys():
-        raise TranslationError('Language {} not available.'.format(from_lang), {})
+        raise TranslationError('Language {} not available.'.format(from_lang))
 
     parameters = {
-        'jsonrpc': '2.0',
-        'method': 'LMT_handle_jobs',
+        'jsonrpc': JSONRPC_VERSION,
+        'method': DEEPL_METHOD,
         'params': {
             'jobs': [
                 {
@@ -47,15 +49,19 @@ def translate(text, to_lang, from_lang='auto'):
                 'source_lang_user_selected': from_lang,
                 'target_lang': to_lang
             },
-            'priority': -1
         },
     }
 
     response = json.loads(requests.post(BASE_URL, json=parameters).text)
 
+    if 'result' not in response:
+        raise TranslationError('DeepL call resulted in a unknown result.')
+
     translations = response['result']['translations']
 
-    if len(translations) == 0 or translations[0]['beams'] is None or translations[0]['beams'][0]['postprocessed_sentence'] is None:
-        raise TranslationError('No translations found.', {})
+    if len(translations) == 0 \
+            or translations[0]['beams'] is None \
+            or translations[0]['beams'][0]['postprocessed_sentence'] is None:
+        raise TranslationError('No translations found.')
 
     return translations[0]['beams'][0]['postprocessed_sentence']
